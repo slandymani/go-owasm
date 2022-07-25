@@ -1,6 +1,6 @@
 package api
 
-// #include "bindings.h"
+// #include "odin_bindings.h"
 import "C"
 import (
 	"errors"

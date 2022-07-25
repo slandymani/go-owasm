@@ -1,6 +1,6 @@
 package api
 
-// #include "bindings.h"
+// #include "odin_bindings.h"
 //
 // Error cGetCalldata(env_t *e, Span *calldata);
 // Error cGetCalldata_cgo(env_t *e, Span *calldata) { return cGetCalldata(e, calldata); }

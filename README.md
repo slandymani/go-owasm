@@ -1,7 +1,7 @@
 ## Generate cbindgen for go
 
 ````
-cbindgen --config cbindgen.toml  --output api/bindings.h
+cbindgen --config cbindgen.toml  --output api/odin_bindings.h
 ```
 
 ## Build shared object library

@@ -1,7 +1,7 @@
 package api
 
 // #cgo LDFLAGS: -Wl,-rpath,${SRCDIR} -L${SRCDIR} -lgo_owasm
-// #include "bindings.h"
+// #include "odin_bindings.h"
 //
 // typedef Span (*get_calldata_fn)(env_t*);
 // Span cGetCalldata_cgo(env_t *e);
@@ -97,7 +97,7 @@ type Cache struct {
 }
 
 func InitCache(cacheSize uint32) (Cache, error) {
-	ptr, err := C.init_cache(C.uint32_t(cacheSize))
+	ptr, err := C.oracle_init_cache(C.uint32_t(cacheSize))
 	if err != nil {
 		return Cache{}, err
 	}
@@ -105,5 +105,5 @@ func InitCache(cacheSize uint32) (Cache, error) {
 }
 
 func ReleaseCache(cache Cache) {
-	C.release_cache(cache.ptr)
+	C.oracle_release_cache(cache.ptr)
 }

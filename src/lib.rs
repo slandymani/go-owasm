@@ -18,15 +18,15 @@ use owasm_vm::error::Error as OwasmError;
 pub struct cache_t {}
 
 #[no_mangle]
-pub extern "C" fn init_cache(size: u32) -> *mut cache_t {
-    let r = catch_unwind(|| do_init_cache(size)).unwrap_or_else(|_| bail!("Caught panic"));
+pub extern "C" fn oracle_init_cache(size: u32) -> *mut cache_t {
+    let r = catch_unwind(|| do_oracle_init_cache(size)).unwrap_or_else(|_| bail!("Caught panic"));
     match r {
         Ok(t) => t as *mut cache_t,
         Err(_) => std::ptr::null_mut(),
     }
 }
 
-fn do_init_cache(size: u32) -> Result<*mut Cache, Error> {
+fn do_oracle_init_cache(size: u32) -> Result<*mut Cache, Error> {
     let cache = Cache::new(CacheOptions { cache_size: size });
     let out = Box::new(cache);
     let res = Ok(Box::into_raw(out));
@@ -34,7 +34,7 @@ fn do_init_cache(size: u32) -> Result<*mut Cache, Error> {
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn release_cache(cache: *mut cache_t) {
+pub unsafe extern "C" fn oracle_release_cache(cache: *mut cache_t) {
     if !cache.is_null() {
         // this will free cache when it goes out of scope
         let _ = Box::from_raw(cache as *mut Cache);

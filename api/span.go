@@ -1,6 +1,6 @@
 package api
 
-// #include "bindings.h"
+// #include "odin_bindings.h"
 // #include <string.h>
 import "C"
 import "unsafe"

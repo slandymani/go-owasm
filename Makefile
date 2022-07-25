@@ -14,7 +14,7 @@ docker-images: docker-image-linux docker-image-osx
 
 # and use them to compile release builds
 release:
-	rm -rf target/release
-	docker run --rm -u $(USER_ID):$(USER_GROUP) -v $(shell pwd)/..:/code owasm/go-ext-builder:$(DOCKER_TAG)-osx
-	rm -rf target/release
-	docker run --rm -u $(USER_ID):$(USER_GROUP) -v $(shell pwd)/..:/code owasm/go-ext-builder:$(DOCKER_TAG)-linux
+	#rm -rf target/release
+	docker run -v $(shell pwd)/..:/code owasm/go-ext-builder:$(DOCKER_TAG)-osx
+	#rm -rf target/release
+	#docker run -v $(shell pwd)/..:/code owasm/go-ext-builder:$(DOCKER_TAG)-linux
